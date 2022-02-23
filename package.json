@@ -1,0 +1,34 @@
+{
+  "name": "stock",
+  "version": "1.0.0",
+  "description": "a app help people check stocks convenient.",
+  "main": "main/main.js",
+  "scripts": {
+    "dev": "npm run pre:dev && concurrently \"npm run render:dev\" \"npm run main:dev\"",
+    "main:dev": "electron .",
+    "render:dev": "cd render && npm run start",
+    "pre:dev": "cross-env BUILD_ENV=development node ./script/pre-script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alwaysmyz/electron-stock.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "mayuanzheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alwaysmyz/electron-stock/issues"
+  },
+  "homepage": "https://github.com/alwaysmyz/electron-stock#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "create-react-app": "^5.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^17.0.1",
+    "electron-log": "^4.4.6"
+  }
+}
