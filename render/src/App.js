@@ -1,22 +1,24 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import zhCN from 'antd/lib/locale/zh_CN';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import routers from './router'
+import { ConfigProvider } from 'antd';
 function App() {
   return (
-    <div className="App">
-      <Router>
-        {routers.map((r, index) => {
-          console.log('r',r.component)
-          return (
-            <Routes key={index}>
+    <ConfigProvider locale={zhCN}>
+      <div className="App">
+        {/* <StockManage></StockManage> */}
+        <Router>
+          {routers.map((r, index) => {
+            return (
               <Route path={r.link} component={r.component}>
               </Route>
-            </Routes>
-          )
-        })}
-      </Router>
-      App页面
-    </div>
+            )
+          })}
+        </Router>
+      </div>
+    </ConfigProvider>
   );
 }
 

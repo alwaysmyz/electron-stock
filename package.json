@@ -24,7 +24,10 @@
   "homepage": "https://github.com/alwaysmyz/electron-stock#readme",
   "dependencies": {
     "concurrently": "^7.0.0",
-    "create-react-app": "^5.0.0"
+    "create-react-app": "^5.0.0",
+    "electron-builder": "^22.14.13",
+    "electron-store": "^8.0.1",
+    "fs": "0.0.1-security"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
