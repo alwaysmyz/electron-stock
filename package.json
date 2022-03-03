@@ -7,7 +7,46 @@
     "dev": "npm run pre:dev && concurrently \"npm run render:dev\" \"npm run main:dev\"",
     "main:dev": "electron .",
     "render:dev": "cd render && npm run start",
-    "pre:dev": "cross-env BUILD_ENV=development node ./script/pre-script.js"
+    "pre:dev": "cross-env BUILD_ENV=development node ./script/pre-script.js",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "Stock",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "dmg": {
+      "background": "build/appdmg.png",
+      "icon": "build/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
   },
   "repository": {
     "type": "git",
