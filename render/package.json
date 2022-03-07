@@ -61,8 +61,8 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack server --config scripts/webpack.dev.conf.js",
-    "build": "NODE_ENV=production webpack --config scripts/webpack.prod.conf.js"
+    "start": "cross-env NODE_ENV=development webpack server --config scripts/webpack.dev.conf.js",
+    "build": "cross-env NODE_ENV=production webpack --config scripts/webpack.prod.conf.js"
   },
   "eslintConfig": {
     "extends": [
@@ -92,6 +92,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.6.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",

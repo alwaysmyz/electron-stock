@@ -8,12 +8,16 @@
     "main:dev": "electron .",
     "render:dev": "cd render && npm run start",
     "pre:dev": "cross-env BUILD_ENV=development node ./script/pre-script.js",
-    "dist": "build"
+    "pre:prod": "cross-env BUILD_ENV=production node ./script/pre-script.js",
+    "make:render": "cd render &&npm run build",
+    "make:win": "npm run pre:prod&&npm run make:render&&electron-builder --win --x64",
+    "make:mac": "npm run pre:prod&&npm run make:render&&electron-builder"
   },
   "build": {
     "appId": "Stock",
     "mac": {
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.productivity",
+      "identity": null
     },
     "dmg": {
       "background": "build/appdmg.png",
@@ -64,12 +68,13 @@
   "dependencies": {
     "concurrently": "^7.0.0",
     "create-react-app": "^5.0.0",
-    "electron-builder": "^22.14.13",
+    "electron-better-ipc": "^2.0.1",
     "electron-store": "^8.0.1",
     "fs": "0.0.1-security"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "electron-builder": "^22.14.13",
     "electron": "^17.0.1",
     "electron-log": "^4.4.6"
   }
