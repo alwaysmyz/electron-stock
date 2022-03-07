@@ -1,5 +1,4 @@
 const path = require("path");
-const paths = require("../config/paths");
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.conf");
@@ -16,6 +15,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: resolve("./dist"),
     filename: "[name].[chunkhash:8].bundle.js",
+    publicPath: './',
   },
   module: {
     rules: [
@@ -44,7 +44,10 @@ module.exports = merge(baseWebpackConfig, {
       chunkFilename: "css/[id].[chunkhash:8].css",
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
-        new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./public/index.html"
+    }),
     // new BundleAnalyzerPlugin({
     //   analyzerMode: "server",
     //   analyzerPort: "8910",
