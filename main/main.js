@@ -1,12 +1,13 @@
 const { app, BrowserWindow,ipcMain } = require('electron')
 const { env } = require('../config/index.json')
 const { StockStore } = require('./StockStore')
+const path = require('path')
 const Store=new StockStore()
-const log =require('electron-log')
+// const log =require('electron-log')
 function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 800,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -16,18 +17,19 @@ function createWindow() {
     console.log('env',env)
     if (env === 'production') {
         //生产环境
-        log.info('生产环境')
-        win.loadFile('./render/public/index.html')
+        // log.info('生产环境')
+        win.loadFile(path.resolve(__dirname, '../render/dist/index.html'))
     } else {
         //开发环境
-        log.info('开发环境')
+        // log.info('开发环境')
+        win.webContents.openDevTools()
         win.loadURL('http://localhost:3000')
+        // win.loadFile(path.resolve(__dirname, '../render/dist/index.html'))
     }
     return win
 }
 app.whenReady().then(() => {
     const window = createWindow()
-    window.webContents.openDevTools()
     ipcMain.on('addStock', (event, args) => {
         console.log('args', [args])
         Store.addStock(args)
